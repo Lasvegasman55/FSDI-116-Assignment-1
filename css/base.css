@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="header.css">
+    <style>
+        :root {
+            --surface-color: #6a4ae0;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f8;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-left: 20px;
+        }
+
+        .nav-options {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-options a {
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 20px;
+            min-height: calc(100vh - 100px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left-side">
+            <div class="logo">fernanda</div>
+        </div>
+        <div class="header-right-side">
+            <div class="nav-options">
+                <a href="#about">ABOUT ME</a>
+                <a href="#projects">PROJECTS</a>
+                <a href="#experience">EXPERIENCE</a>
+                <a href="#contact">CONTACT ME</a>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <!-- Your content will go here -->
+    </div>
+</body>
+</html>

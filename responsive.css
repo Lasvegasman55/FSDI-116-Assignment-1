@@ -1,0 +1,32 @@
+/* responsive.css */
+
+/* 
+  Small (smaller than 640px)
+  Medium (641px to 1007px)
+*/
+
+/*Phone View*/
+@media(max-width:640px){
+    html {
+      font-size: 12px;
+    }
+    
+    /*Header*/
+    header {
+      flex-direction: column;
+      height: max-content;
+      padding: 2%;
+    }
+    
+    .nav-options {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .nav-options a {
+      margin: 1rem 0px;
+    }
+  }
