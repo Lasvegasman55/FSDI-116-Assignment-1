@@ -3,9 +3,538 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="header.css">
+    <style>
+        :root {
+            --surface-color: #6a4ae0;
+            --surface-color-light: #7d61e4;
+            --text-color: #333;
+            --accent-color: #ff6b6b;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f8;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-left: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-options {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-options a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6a4ae0 0%, #a78bfa 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        .cta-button {
+            background-color: white;
+            color: var(--surface-color);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1.4s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Bio Section */
+        .about {
+            background-color: var(--light-bg);
+        }
+        
+        .bio-container {
+            display: flex;
+            max-width: 1000px;
+            margin: 0 auto;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        
+        .bio-image {
+            flex: 0 0 30%;
+        }
+        
+        .profile-placeholder {
+            aspect-ratio: 1 / 1;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-placeholder i {
+            font-size: 5rem;
+            color: #999;
+        }
+        
+        .bio-content {
+            flex: 1;
+        }
+        
+        .bio-content h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: var(--surface-color);
+        }
+        
+        .bio-content h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .bio-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .bio-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .bio-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .bio-detail i {
+            color: var(--surface-color);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .skill {
+            background-color: white;
+            color: var(--surface-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(106, 74, 224, 0.2);
+        }
+        
+        /* Project Cards */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: #ddd;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-content h3 {
+            margin-top: 0;
+            color: var(--surface-color);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .tag {
+            background-color: var(--light-bg);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .project-links a {
+            text-decoration: none;
+            color: var(--surface-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .project-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-bg);
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .contact-form .full-width {
+            grid-column: 1 / 3;
+        }
+        
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form button {
+            background-color: var(--surface-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-form button:hover {
+            background-color: var(--surface-color-light);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left-side">
+            <div class="hamburger-menu">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            <div class="logo">michael</div>
+        </div>
+        <div class="header-right-side">
+            <div class="nav-options">
+                <a href="#about">ABOUT ME</a>
+                <a href="#projects">PROJECTS</a>
+                <a href="#experience">EXPERIENCE</a>
+                <a href="#contact">CONTACT ME</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Hello, I'm Michael</h1>
+            <p>Web Developer & UI/UX Designer crafting beautiful digital experiences</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </section>
+        
+        <!-- Bio Section -->
+        <section id="about" class="about">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            
+            <div class="bio-container">
+                <div class="bio-container">
+                    <div class="bio-image">
+                        <img src="./img/my avatar palms.jpg" alt="Michael Matthews" class="profile-photo">
+                    </div>
+                
+                <div class="bio-content">
+                    <h3>Michael Matthews</h3>
+                    <h4>Full-Stack Developer</h4>
+                    <p>I'm a passionate developer with over 5 years of experience building web applications and interactive digital experiences. My journey in tech began with a curiosity about how websites work, which evolved into a career crafting elegant solutions for complex problems.</p>
+                    <p>Specializing in modern JavaScript frameworks and responsive design, I strive to create applications that are not only functional but also intuitive and accessible to all users. My approach combines technical expertise with creative thinking to deliver projects that exceed expectations.</p>
+                    <div class="bio-details">
+                        <div class="bio-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Las Vegas, NV</span>
+                        </div>
+                        <div class="bio-detail">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>B.S. in Computer Science</span>
+                        </div>
+                        <div class="bio-detail">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Available for freelance</span>
+                        </div>
+                    </div>
+                    <div class="skills-wrapper">
+                        <div class="skills-label">
+                          <h3>My Skills</h3>
+                        </div>
+                        <div class="skills-container">
+                          <div class="skill">HTML/CSS</div>
+                          <div class="skill">JavaScript</div>
+                          <div class="skill">React</div>
+                          <div class="skill">Node.js</div>
+                          <div class="skill">Python</div>
+                          <div class="skill">UI/UX Design</div>
+                        </div>
+                      </div>
+            </div>
+        </section>
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="section-title">
+                <h2>My Projects</h2>
+            </div>
+            
+            <div class="projects-container">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <h3>E-commerce Website</h3>
+                        <p>A fully responsive e-commerce platform with integrated payment processing and inventory management.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <h3>Task Management App</h3>
+                        <p>A productivity app that helps users organize tasks with features like drag-and-drop, reminders, and categories.</p>
+                        <div class="project-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">CSS Grid</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <h3>Weather Dashboard</h3>
+                        <p>A weather application that provides real-time forecasts, interactive maps, and localized weather alerts.</p>
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Weather API</span>
+                            <span class="tag">Chart.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            
+            <div class="contact-container">
+                <form class="contact-form">
+                    <div>
+                        <input type="text" placeholder="Name" required>
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="full-width">
+                        <input type="text" placeholder="Subject">
+                    </div>
+                    <div class="full-width">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <div class="full-width">
+                        <button type="submit">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2025 Michael. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Include the hamburger menu JavaScript -->
+    <script src="hamburger.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="header.css">
     <style>
+        :root {
+            --surface-color: #6a4ae0;
+        }
+        
         body {
             margin: 0;
             padding: 0;
@@ -16,9 +545,7 @@
         header {
             display: flex;
             align-items: center;
-            background: linear-gradient(to right, #6a4ae0, #5468e7);
             color: white;
-            padding: 15px 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -26,20 +553,16 @@
             font-family: 'Brush Script MT', cursive;
             font-size: 2rem;
             font-weight: 300;
-            margin-right: 40px;
+            margin-left: 20px;
         }
 
         .nav-options {
             display: flex;
-            gap: 20px;
+            justify-content: flex-end;
         }
 
         .nav-options a {
-            color: white;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
         }
 
         .nav-links a:hover {
@@ -55,6 +578,11 @@
 <body>
     <header>
         <div class="header-left-side">
+            <div class="hamburger-menu">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
             <div class="logo">Michael</div>
         </div>
         <div class="header-right-side">
@@ -69,5 +597,8 @@
     <div class="content">
         <!-- Your content will go here -->
     </div>
+
+    <!-- Include the hamburger menu JavaScript -->
+    <script src="hamburger.js"></script>
 </body>
 </html>
